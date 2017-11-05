@@ -1,11 +1,11 @@
-using namespace std;
+#include "LogBook.h"
 
-Logbook log = LogBook(9600);
+LogBook book = LogBook(9600);
 
 void setup() {
-  log.setup();
+  book.setup();
 }
 
 void loop() {
-  log.update();
+  book.loop();
 }
