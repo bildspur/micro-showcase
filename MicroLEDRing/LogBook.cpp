@@ -3,7 +3,13 @@
 
 LogBook::LogBook(int rate)
 {
+  LogBook(rate, true);
+}
+
+LogBook::LogBook(int rate, bool logging)
+{
   baudRate = rate;
+  isLogging = logging;
 }
 
 void LogBook::setup()
@@ -18,10 +24,12 @@ void LogBook::loop()
 
 void LogBook::print(char *message)
 {
-  Serial.print(message);
+  if (isLogging)
+    Serial.print(message);
 }
 
 void LogBook::println(char *message)
 {
-  Serial.println(message);
+  if (isLogging)
+    Serial.println(message);
 }

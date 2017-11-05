@@ -5,9 +5,11 @@ class LogBook : public Controller
 {
   private:
     int baudRate;
+    bool isLogging;
 
   public:
     LogBook(int rate);
+    LogBook(int rate, bool logging);
 
     virtual void setup();
     virtual void loop();
