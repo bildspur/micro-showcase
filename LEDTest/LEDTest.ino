@@ -19,7 +19,7 @@
 
 #define STATUS_PIN D2
 #define LED_PIN D1
-#define NUMPIXELS 30
+#define NUMPIXELS 144
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
