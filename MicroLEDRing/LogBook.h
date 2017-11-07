@@ -8,8 +8,7 @@ class LogBook : public Controller
     bool isLogging;
 
   public:
-    LogBook(int rate);
-    LogBook(int rate, bool logging);
+    LogBook(int baudRate, bool isLogging = true);
 
     virtual void setup();
     virtual void loop();

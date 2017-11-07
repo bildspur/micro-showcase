@@ -17,9 +17,7 @@ class LEDRing {
   public:
     LEDRing(int count);
 
-    void light(CRGB color);
-    void clear();
-    void show();
+    void all(CRGB color);
 
     template<uint8_t DATA_PIN> void setup() {
       this->pin = DATA_PIN;

@@ -1,15 +1,10 @@
 #include "LogBook.h"
 #include <Arduino.h>
 
-LogBook::LogBook(int rate)
+LogBook::LogBook(int baudRate, bool isLogging)
 {
-  LogBook(rate, true);
-}
-
-LogBook::LogBook(int rate, bool logging)
-{
-  baudRate = rate;
-  isLogging = logging;
+  this->baudRate = baudRate;
+  this->isLogging = isLogging;
 }
 
 void LogBook::setup()
