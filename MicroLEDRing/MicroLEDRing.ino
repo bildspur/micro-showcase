@@ -16,12 +16,6 @@ void setup() {
   delay(3000);
   ring.setup<DATA_PIN>();
 
-
-  ring.all(CRGB::Black);
-  FastLED.show();
-
-  delay(100);
-
   ring.all(CRGB::Blue);
   FastLED.show();
 
