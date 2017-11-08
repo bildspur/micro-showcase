@@ -1,7 +1,7 @@
 #include "LEDRing.h"
-#include <FastLED.h>
 
 LEDRing::LEDRing(int count) {
+  this->count = count;
   leds = new CRGB[count];
 
   // clear arrays
