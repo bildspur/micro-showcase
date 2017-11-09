@@ -9,7 +9,6 @@
 LogBook book = LogBook(9600);
 
 LEDRing ring = LEDRing(NUM_LEDS);
-LEDRing ring2 = LEDRing(NUM_LEDS);
 
 void setup() {
   book.setup();
@@ -20,7 +19,6 @@ void setup() {
   ring2.setup<7>();
 
   ring.all(CRGB::Blue);
-  ring2.all(CRGB::Red);
   book.println("ring set!");
 
   delay(500);
@@ -30,7 +28,7 @@ void loop() {
   //book.loop();
 
   ring.all(CRGB::White);
-  ring2.all(CRGB::Black);
+  
   // write leds
   FastLED.show();
   FastLED.delay(1000 / UPDATES_PER_SECOND);
@@ -38,7 +36,7 @@ void loop() {
   delay(500);
 
   ring.all(CRGB::Black);
-  ring2.all(CRGB::White);
+  
   // write leds
   FastLED.show();
   FastLED.delay(1000 / UPDATES_PER_SECOND);
