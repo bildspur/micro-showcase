@@ -1,7 +1,7 @@
 #include "LogBook.h"
 #include "LEDRing.h"
 
-#define NUM_LEDS 144
+#define NUM_LEDS 442
 #define DATA_PIN 8
 
 #define UPDATES_PER_SECOND 100
@@ -16,7 +16,6 @@ void setup() {
 
   delay(3000);
   ring.setup<DATA_PIN>();
-  ring2.setup<7>();
 
   ring.all(CRGB::Blue);
   book.println("ring set!");
@@ -27,7 +26,7 @@ void setup() {
 void loop() {
   //book.loop();
 
-  ring.all(CRGB::White);
+  ring.all(CRGB::Cyan);
   
   // write leds
   FastLED.show();
@@ -35,7 +34,7 @@ void loop() {
 
   delay(500);
 
-  ring.all(CRGB::Black);
+  //ring.all(CRGB::Blue);
   
   // write leds
   FastLED.show();
