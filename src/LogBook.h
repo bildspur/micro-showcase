@@ -1,18 +1,19 @@
 #ifndef LogBook_h
 #define LogBook_h
 
-class LogBook
-{
-  private:
-    static int baudRate;
-    static bool isLogging;
+#include <Arduino.h>
 
-    LogBook();
+class LogBook {
+private:
+  static int baudRate;
+  static bool isLogging;
 
-  public:
-    static void setup(int baudRate, bool isLogging = true);
+  LogBook();
 
-    static void print(char *message);
-    static void println(char *message);
+public:
+  static void setup(int baudRate, bool isLogging = true);
+
+  static void print(String message);
+  static void println(String message);
 };
 #endif

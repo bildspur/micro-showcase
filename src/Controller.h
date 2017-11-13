@@ -1,10 +1,16 @@
 #ifndef Controller_h
 #define Controller_h
+
+/*
+#include "LEDRing.h"
+
 class Controller {
-  private:
-  
-  public:
-    virtual void setup();
-    virtual void loop();
+private:
+  LEDRing *rings;
+
+public:
+  virtual void setup(LEDRing *rings);
+  virtual void loop();
 };
+*/
 #endif

@@ -4,8 +4,7 @@
 int LogBook::baudRate;
 bool LogBook::isLogging;
 
-void LogBook::setup(int baudRate, bool isLogging)
-{
+void LogBook::setup(int baudRate, bool isLogging) {
   LogBook::isLogging = isLogging;
   LogBook::baudRate = baudRate;
 
@@ -13,14 +12,12 @@ void LogBook::setup(int baudRate, bool isLogging)
   Serial.println("Logbook started!");
 }
 
-void LogBook::print(char *message)
-{
+void LogBook::print(String message) {
   if (isLogging)
     Serial.print(message);
 }
 
-void LogBook::println(char *message)
-{
+void LogBook::println(String message) {
   if (isLogging)
     Serial.println(message);
 }
