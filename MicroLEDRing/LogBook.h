@@ -1,19 +1,18 @@
 #ifndef LogBook_h
 #define LogBook_h
-#include "Controller.h"
-class LogBook : public Controller
+
+class LogBook
 {
   private:
-    int baudRate;
-    bool isLogging;
+    static int baudRate;
+    static bool isLogging;
+
+    LogBook();
 
   public:
-    LogBook(int baudRate, bool isLogging = true);
+    static void setup(int baudRate, bool isLogging = true);
 
-    virtual void setup();
-    virtual void loop();
-
-    void print(char *message);
-    void println(char *message);
+    static void print(char *message);
+    static void println(char *message);
 };
 #endif

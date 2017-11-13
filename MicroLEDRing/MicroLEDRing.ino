@@ -15,8 +15,6 @@
 
 #define BRIGHTNESS 32
 
-LogBook book = LogBook(9600);
-
 LEDRing smallRing = LEDRing(NUM_LEDS_SMALL);
 LEDRing mediumRing = LEDRing(NUM_LEDS_MEDIUM);
 LEDRing largeRing = LEDRing(NUM_LEDS_LARGE);
@@ -24,8 +22,8 @@ LEDRing largeRing = LEDRing(NUM_LEDS_LARGE);
 CHSV baseColor = fromHSV(180, 100, 100);
 
 void setup() {
-  book.setup();
-  book.println("setting up led rings...");
+  LogBook::setup(9600);
+  LogBook::println("setting up led rings...");
 
   //delay(1000);
 
@@ -40,7 +38,7 @@ void setup() {
   mediumRing.set(CRGB::Green, 0, 1);
   largeRing.set(CRGB::Blue, 0, 1);
 
-  book.println("rings ready!");
+  LogBook::println("rings ready!");
 }
 
 void loop() {

@@ -4,7 +4,6 @@
 #include <FastLED.h>
 #include <Arduino.h>
 
-
 static CHSV fromHSV(int hue, int sat, int val)
 {
   byte h = map(hue, 0, 360, 0, 255);

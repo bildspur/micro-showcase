@@ -1,20 +1,16 @@
 #include "LogBook.h"
 #include <Arduino.h>
 
-LogBook::LogBook(int baudRate, bool isLogging)
-{
-  this->baudRate = baudRate;
-  this->isLogging = isLogging;
-}
+int LogBook::baudRate;
+bool LogBook::isLogging;
 
-void LogBook::setup()
+void LogBook::setup(int baudRate, bool isLogging)
 {
+  LogBook::isLogging = isLogging;
+  LogBook::baudRate = baudRate;
+
   Serial.begin(baudRate);
   Serial.println("Logbook started!");
-}
-
-void LogBook::loop()
-{
 }
 
 void LogBook::print(char *message)
