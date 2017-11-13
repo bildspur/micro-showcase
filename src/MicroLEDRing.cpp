@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include "LogBook.h"
 #include "LEDRing.h"
 #include "MicroUtils.h"
