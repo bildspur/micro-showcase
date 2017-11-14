@@ -10,9 +10,11 @@ extern "C" {
 
 #define TCAADDR 0x70
 
+typedef VL53L0X *VL53L0XPtr;
+
 class DistanceSensorArray {
 private:
-  VL53L0X *loxs;
+  VL53L0XPtr *sensors;
   int length;
 
   void tcaSelect(uint8_t i);

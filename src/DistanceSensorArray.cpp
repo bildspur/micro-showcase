@@ -14,25 +14,20 @@ void DistanceSensorArray::tcaSelect(uint8_t i) {
 void DistanceSensorArray::setup() {
   Wire.begin();
 
-  loxs = new VL53L0X[length];
+  sensors = new VL53L0XPtr[length];
   results = new int[length];
 
   // setup sensor array
   for (uint8_t i = 0; i < length; i++) {
     tcaSelect(i);
 
-    // setup sensor
-    results[i] = -1;
-    VL53L0X sensor = VL53L0X();
-
-    // init lox sensor
-    sensor.init();
-    sensor.setTimeout(500);
+    VL53L0XPtr sensor = new VL53L0X();
+    sensor->init();
+    sensor->setTimeout(500);
 
     // reduce timing budget to 20 ms (default is about 33 ms)
-    sensor.setMeasurementTimingBudget(20000);
-
-    loxs[i] = sensor;
+    sensor->setMeasurementTimingBudget(20000);
+    sensors[i] = sensor;
   }
 };
 
@@ -40,12 +35,11 @@ void DistanceSensorArray::readData() {
   for (uint8_t i = 0; i < length; i++) {
     // switch tca
     tcaSelect(i);
-
-    VL53L0X sensor = loxs[i];
+    VL53L0XPtr sensor = sensors[i];
 
     // measure and save to result array
-    results[i] = sensor.readRangeSingleMillimeters();
-    if (sensor.timeoutOccurred()) {
+    results[i] = sensor->readRangeSingleMillimeters();
+    if (sensor->timeoutOccurred()) {
       results[i] = -1;
     }
   }
