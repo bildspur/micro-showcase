@@ -1,17 +1,6 @@
 #include "DistanceSensorArray.h"
 
-DistanceSensorArray::DistanceSensorArray(int length) {
-  this->length = length;
-
-  loxs = new Adafruit_VL53L0X[length];
-  results = new int[length];
-
-  // setup sensor array
-  for (int i = 0; i < length; i++) {
-    loxs[i] = Adafruit_VL53L0X();
-    results[i] = -1;
-  }
-};
+DistanceSensorArray::DistanceSensorArray(int length) { this->length = length; };
 
 void DistanceSensorArray::tcaSelect(uint8_t i) {
   if (i > 7)
@@ -25,31 +14,38 @@ void DistanceSensorArray::tcaSelect(uint8_t i) {
 void DistanceSensorArray::setup() {
   Wire.begin();
 
-  // init lox sensors
+  loxs = new VL53L0X[length];
+  results = new int[length];
+
+  // setup sensor array
   for (uint8_t i = 0; i < length; i++) {
     tcaSelect(i);
 
-    if (!loxs[i].begin()) {
-      Serial.print("Failed to boot VL53L0X [");
-      Serial.print(i);
-      Serial.println("]");
-    }
+    // setup sensor
+    results[i] = -1;
+    VL53L0X sensor = VL53L0X();
+
+    // init lox sensor
+    sensor.init();
+    sensor.setTimeout(500);
+
+    // reduce timing budget to 20 ms (default is about 33 ms)
+    sensor.setMeasurementTimingBudget(20000);
+
+    loxs[i] = sensor;
   }
 };
 
 void DistanceSensorArray::readData() {
-  VL53L0X_RangingMeasurementData_t measure;
-
   for (uint8_t i = 0; i < length; i++) {
     // switch tca
     tcaSelect(i);
 
-    // measure
-    loxs[i].rangingTest(&measure, false);
+    VL53L0X sensor = loxs[i];
 
-    if (measure.RangeStatus != 4) {
-      results[i] = measure.RangeMilliMeter;
-    } else {
+    // measure and save to result array
+    results[i] = sensor.readRangeSingleMillimeters();
+    if (sensor.timeoutOccurred()) {
       results[i] = -1;
     }
   }

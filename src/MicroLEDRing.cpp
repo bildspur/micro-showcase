@@ -54,6 +54,8 @@ void loop() {
   // read
   sensorArray.readData();
 
+  delay(30);
+
   for (int i = 0; i < sensorArray.getLength(); i++) {
     Serial.print(i);
     Serial.print(" => Distance (mm): ");

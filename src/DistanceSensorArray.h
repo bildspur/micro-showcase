@@ -1,9 +1,9 @@
 #ifndef DistanceSensorArray_h
 #define DistanceSensorArray_h
 
-#include "Adafruit_VL53L0X.h"
+#include <VL53L0X.h>
 
-#include "Wire.h"
+#include <Wire.h>
 extern "C" {
 #include "utility/twi.h" // from Wire library, so we can do bus scanning
 }
@@ -12,8 +12,9 @@ extern "C" {
 
 class DistanceSensorArray {
 private:
-  Adafruit_VL53L0X *loxs;
+  VL53L0X *loxs;
   int length;
+
   void tcaSelect(uint8_t i);
 
 public:
