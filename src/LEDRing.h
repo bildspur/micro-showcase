@@ -12,16 +12,16 @@
 class LEDRing {
 private:
   int pin;
-  int length;
 
   Direction direction;
-
-  CRGB *leds;
 
   int directionalIndex(int index);
   int mapIndex(float index);
 
 public:
+  CRGB *leds;
+  int length;
+
   LEDRing(int count, Direction direction = Direction::Default);
 
   void all(CRGB color);

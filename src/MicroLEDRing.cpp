@@ -10,10 +10,10 @@
 #define NUM_LEDS_SMALL 160
 #define DATA_PIN_SMALL 2
 
-#define NUM_LEDS_MEDIUM 5 // 300
+#define NUM_LEDS_MEDIUM 12 // 300
 #define DATA_PIN_MEDIUM 4
 
-#define NUM_LEDS_LARGE 5 // 432
+#define NUM_LEDS_LARGE 12 // 432
 #define DATA_PIN_LARGE 5
 
 #define UPDATES_PER_SECOND 100
@@ -66,6 +66,7 @@ void setup() {
 
 void loop() {
   // read sensors
+  /*
   sensorArray.readData();
 
   for (int i = 0; i < sensorArray.getLength(); i++) {
@@ -75,6 +76,7 @@ void loop() {
   }
 
   Serial.println("===========");
+  */
 
   // run active scene
   activeScene->loop();
