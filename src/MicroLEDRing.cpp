@@ -54,13 +54,15 @@ void loop() {
   // read
   sensorArray.readData();
 
-  delay(30);
-
   for (int i = 0; i < sensorArray.getLength(); i++) {
     Serial.print(i);
     Serial.print(" => Distance (mm): ");
     Serial.println(sensorArray.results[i]);
   }
+
+  Serial.println("===========");
+
+  delay(500);
 
   // write leds
   FastLED.show();

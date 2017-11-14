@@ -1,16 +1,16 @@
-#ifndef Controller_h
-#define Controller_h
+#ifndef LightScene_h
+#define LightScene_h
 
-/*
 #include "LEDRing.h"
 
-class Controller {
+class LightScene {
 private:
   LEDRing *rings;
 
 public:
+  LightScene();
   virtual void setup(LEDRing *rings);
   virtual void loop();
 };
-*/
+
 #endif
