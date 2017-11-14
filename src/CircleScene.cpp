@@ -2,11 +2,11 @@
 
 CircleScene::CircleScene() {
   // 'black out' all 16 palette entries...
-  fill_solid(palette, 16, CRGB::Cyan);
+  fill_solid(palette, 16, CRGB::White);
   // and set every fourth one to white.
 
-  for (int i = 0; i < 8; i++) {
-    palette[i] = CRGB::White;
+  for (int i = 0; i < 12; i++) {
+    palette[i] = CRGB::Cyan;
   }
 };
 
