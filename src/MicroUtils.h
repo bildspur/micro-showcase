@@ -1,8 +1,13 @@
 #ifndef MicroUtils_h
 #define MicroUtils_h
 
+#include "LEDRing.h"
 #include <Arduino.h>
 #include <FastLED.h>
+#include <VL53L0X.h>
+
+typedef VL53L0X *VL53L0XPtr;
+typedef LEDRing *LEDRingPtr;
 
 static CHSV fromHSV(int hue, int sat, int val) {
   byte h = map(hue, 0, 360, 0, 255);

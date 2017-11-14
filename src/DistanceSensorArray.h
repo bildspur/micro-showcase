@@ -1,6 +1,7 @@
 #ifndef DistanceSensorArray_h
 #define DistanceSensorArray_h
 
+#include "MicroUtils.h"
 #include <VL53L0X.h>
 
 #include <Wire.h>
@@ -9,8 +10,6 @@ extern "C" {
 }
 
 #define TCAADDR 0x70
-
-typedef VL53L0X *VL53L0XPtr;
 
 class DistanceSensorArray {
 private:

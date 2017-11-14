@@ -2,5 +2,5 @@
 #include "LightScene.h"
 
 LightScene::LightScene(){};
-void LightScene::setup(LEDRing *rings) { this->rings = rings; };
+void LightScene::setup(LEDRingPtr *rings) { this->rings = rings; };
 void LightScene::loop(){};

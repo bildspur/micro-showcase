@@ -2,14 +2,15 @@
 #define LightScene_h
 
 #include "LEDRing.h"
+#include "MicroUtils.h"
 
 class LightScene {
 private:
-  LEDRing *rings;
-
 public:
+  LEDRingPtr *rings;
+
   LightScene();
-  virtual void setup(LEDRing *rings);
+  virtual void setup(LEDRingPtr *rings);
   virtual void loop();
 };
 
