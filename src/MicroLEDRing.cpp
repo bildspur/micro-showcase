@@ -2,16 +2,13 @@
 
 #include "CircleScene.h"
 #include "DistanceSensorArray.h"
-#include "LEDRing.h"
-#include "LightScene.h"
 #include "LogBook.h"
-#include "MicroUtils.h"
 #include "Timer.h"
 
 #define NUM_LEDS_SMALL 160
 #define DATA_PIN_SMALL 3
 
-#define NUM_LEDS_MEDIUM 300
+#define NUM_LEDS_MEDIUM 288
 #define DATA_PIN_MEDIUM 4
 
 #define NUM_LEDS_LARGE 432
@@ -67,6 +64,7 @@ void setup() {
 
 void loop() {
     // read sensors
+    /*
     if(sensorTimer.elapsed()) {
         sensorArray.readData();
 
@@ -80,6 +78,7 @@ void loop() {
             Serial.println();
         }
     }
+     */
 
     // run active scene
     activeScene->loop();
