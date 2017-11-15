@@ -12,7 +12,7 @@ LEDRing::LEDRing(int length, Direction direction) {
 }
 
 void LEDRing::all(CRGB color) {
-    set(color, 0f, 1f);
+    set(color, 0.0, 0.0);
 }
 
 void LEDRing::set(CRGB color, float startIndex, float endIndex) {
