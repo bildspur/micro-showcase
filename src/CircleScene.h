@@ -4,6 +4,7 @@
 #include "LEDRing.h"
 #include "LightScene.h"
 #include "MicroUtils.h"
+#include "DistanceSensorArray.h"
 
 class CircleScene : public LightScene {
 private:
@@ -15,14 +16,17 @@ private:
     double speed = 0.02;
 
     CRGBPalette16 palette;
+    CRGBPalette16 activePalette;
     TBlendType blending = LINEARBLEND;
 
     void loopRing(LEDRingPtr ring);
 
+    DistanceSensorArray *sensorArray;
+
 public:
     CircleScene();
 
-    void setup(LEDRingPtr *rings) override;
+    void setup(LEDRingPtr *rings, DistanceSensorArray *sensorArray);
 
     void loop() override;
 };

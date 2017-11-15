@@ -56,7 +56,7 @@ void setup() {
     FastLED.setBrightness(BRIGHTNESS);
 
     // setup scenes
-    circleScene.setup(rings);
+    circleScene.setup(rings, &sensorArray);
     activeScene = &circleScene;
 
     LogBook::println("rings ready!");
@@ -64,8 +64,7 @@ void setup() {
 
 void loop() {
     // read sensors
-    /*
-    if(sensorTimer.elapsed()) {
+    if (sensorTimer.elapsed()) {
         sensorArray.readData();
 
         if (DEBUG) {
@@ -78,7 +77,6 @@ void loop() {
             Serial.println();
         }
     }
-     */
 
     // run active scene
     activeScene->loop();

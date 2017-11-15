@@ -12,7 +12,7 @@ LEDRing::LEDRing(int length, Direction direction) {
 }
 
 void LEDRing::all(CRGB color) {
-    set(color, 0.0, 0.0);
+    set(color, 0.0, 1.0);
 }
 
 void LEDRing::set(CRGB color, float startIndex, float endIndex) {
@@ -20,12 +20,12 @@ void LEDRing::set(CRGB color, float startIndex, float endIndex) {
     int e = mapIndex(endIndex);
     int count = e - s;
 
-    for (int i = s; i < count; i++) {
-        leds[directionalIndex(i) % length] = color;
+    for (uint8_t i = 0; i < count; i++) {
+        leds[(directionalIndex(i) + s) % length] = color;
     }
 }
 
-int LEDRing::mapIndex(float index) { return static_cast<int>(round(length * index)); }
+int LEDRing::mapIndex(float index) { return round(length * index); }
 
 int LEDRing::directionalIndex(int index) {
     if (direction == Direction::Inverted)
