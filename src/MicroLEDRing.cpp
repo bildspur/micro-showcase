@@ -35,53 +35,47 @@ CircleScene circleScene = CircleScene();
 LightScene *activeScene;
 
 void setup() {
-  LogBook::setup(9600);
-  LogBook::println("setting up led rings...");
+    LogBook::setup(9600);
+    LogBook::println("setting up led rings...");
 
-  // delay(1000);
+    // delay(1000);
 
-  // setup rings
-  smallRing.setup<DATA_PIN_SMALL>();
-  mediumRing.setup<DATA_PIN_MEDIUM>();
-  largeRing.setup<DATA_PIN_LARGE>();
+    // setup rings
+    smallRing.setup<DATA_PIN_SMALL>();
+    mediumRing.setup<DATA_PIN_MEDIUM>();
+    largeRing.setup<DATA_PIN_LARGE>();
 
-  // setup sensors
-  sensorArray.setup();
+    // setup sensors
+    sensorArray.setup();
 
-  /*
-  smallRing.set(baseColor, 0, 1);
-  mediumRing.set(baseColor, 0, 1);
-  largeRing.set(baseColor, 0, 1);
-  */
+    // setup brightness
+    FastLED.setBrightness(BRIGHTNESS);
 
-  // setup brightness
-  FastLED.setBrightness(BRIGHTNESS);
+    // setup scenes
+    circleScene.setup(rings);
+    activeScene = &circleScene;
 
-  // setup scenes
-  circleScene.setup(rings);
-  activeScene = &circleScene;
-
-  LogBook::println("rings ready!");
+    LogBook::println("rings ready!");
 }
 
 void loop() {
-  // read sensors
-  /*
-  sensorArray.readData();
+    // read sensors
+    /*
+    sensorArray.readData();
 
-  for (int i = 0; i < sensorArray.getLength(); i++) {
-    Serial.print(i);
-    Serial.print(" => Distance (mm): ");
-    Serial.println(sensorArray.results[i]);
-  }
+    for (int i = 0; i < sensorArray.getLength(); i++) {
+      Serial.print(i);
+      Serial.print(" => Distance (mm): ");
+      Serial.println(sensorArray.results[i]);
+    }
 
-  Serial.println("===========");
-  */
+    Serial.println("===========");
+    */
 
-  // run active scene
-  activeScene->loop();
+    // run active scene
+    activeScene->loop();
 
-  // write leds
-  FastLED.show();
-  FastLED.delay(1000 / UPDATES_PER_SECOND);
+    // write leds
+    FastLED.show();
+    FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
