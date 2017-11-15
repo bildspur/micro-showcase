@@ -6,6 +6,8 @@
 #include "MicroUtils.h"
 #include "DistanceSensorArray.h"
 
+#define INTERACTION_DISTANCE 5000
+
 class CircleScene : public LightScene {
 private:
     CHSV baseColor = fromHSV(180, 100, 100);
@@ -19,7 +21,7 @@ private:
     CRGBPalette16 activePalette;
     TBlendType blending = LINEARBLEND;
 
-    void loopRing(LEDRingPtr ring);
+    void loopRing(uint8_t id, LEDRingPtr ring);
 
     DistanceSensorArray *sensorArray;
 

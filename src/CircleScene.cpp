@@ -20,11 +20,11 @@ void CircleScene::setup(LEDRingPtr *rings,DistanceSensorArray *sensorArray) {
 
 void CircleScene::loop() {
     for (uint8_t i = 0; i < sizeof(rings) + 1; i++) {
-        loopRing(rings[i]);
+        loopRing(i, rings[i]);
     }
 };
 
-void CircleScene::loopRing(LEDRingPtr ring) {
+void CircleScene::loopRing(uint8_t id, LEDRingPtr ring) {
     static uint8_t startIndex = 0;
     startIndex = (startIndex + 1) % 14400;
 
@@ -35,10 +35,20 @@ void CircleScene::loopRing(LEDRingPtr ring) {
     bool sensorDetected = false;
 
     // check sensors
-    for (int i = 0; i < sensorArray->getLength(); i++) {
-        if (sensorArray->results[i] < 5000)
-            sensorDetected = true;
-    }
+    if(id == 0 && sensorArray->results[0] < INTERACTION_DISTANCE)
+        sensorDetected = true;
+
+    if(id == 0 && sensorArray->results[1] < INTERACTION_DISTANCE)
+        sensorDetected = true;
+
+    if(id == 1 && sensorArray->results[2] < INTERACTION_DISTANCE)
+        sensorDetected = true;
+
+    if(id == 2 && sensorArray->results[3] < INTERACTION_DISTANCE)
+        sensorDetected = true;
+
+    if(id == 2 && sensorArray->results[4] < INTERACTION_DISTANCE)
+        sensorDetected = true;
 
     for (int i = 0; i < ring->length; i++) {
         if (sensorDetected)
