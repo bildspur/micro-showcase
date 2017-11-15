@@ -21,12 +21,12 @@ void DistanceSensorArray::setup() {
   for (uint8_t i = 0; i < length; i++) {
     tcaSelect(i);
 
-    VL53L0XPtr sensor = new VL53L0X();
+    auto sensor = new VL53L0X();
     sensor->init();
     sensor->setTimeout(500);
 
     // reduce timing budget to 20 ms (default is about 33 ms)
-    sensor->setMeasurementTimingBudget(20000);
+    sensor->setMeasurementTimingBudget(33000);
     sensors[i] = sensor;
   }
 };

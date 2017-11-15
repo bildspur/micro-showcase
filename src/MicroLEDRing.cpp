@@ -6,6 +6,7 @@
 #include "LightScene.h"
 #include "LogBook.h"
 #include "MicroUtils.h"
+#include "Timer.h"
 
 #define NUM_LEDS_SMALL 160
 #define DATA_PIN_SMALL 3
@@ -18,7 +19,11 @@
 
 #define UPDATES_PER_SECOND 100
 
+#define SENSOR_TIMER 500
+
 #define BRIGHTNESS 100
+
+#define DEBUG true
 
 // create single led rings
 LEDRing smallRing = LEDRing(NUM_LEDS_SMALL);
@@ -28,11 +33,13 @@ LEDRing largeRing = LEDRing(NUM_LEDS_LARGE);
 // create led ring ptr array
 LEDRingPtr rings[]{&smallRing, &mediumRing, &largeRing};
 
-DistanceSensorArray sensorArray = DistanceSensorArray(1);
+DistanceSensorArray sensorArray = DistanceSensorArray(5);
 
 // create scenes
 CircleScene circleScene = CircleScene();
 LightScene *activeScene;
+
+Timer sensorTimer = Timer(SENSOR_TIMER);
 
 void setup() {
     LogBook::setup(9600);
@@ -60,17 +67,19 @@ void setup() {
 
 void loop() {
     // read sensors
-    /*
-    sensorArray.readData();
+    if(sensorTimer.elapsed()) {
+        sensorArray.readData();
 
-    for (int i = 0; i < sensorArray.getLength(); i++) {
-      Serial.print(i);
-      Serial.print(" => Distance (mm): ");
-      Serial.println(sensorArray.results[i]);
+        if (DEBUG) {
+            for (int i = 0; i < sensorArray.getLength(); i++) {
+                Serial.print(i);
+                Serial.print(" => ");
+                Serial.print(sensorArray.results[i]);
+                Serial.print("mm;\t");
+            }
+            Serial.println();
+        }
     }
-
-    Serial.println("===========");
-    */
 
     // run active scene
     activeScene->loop();

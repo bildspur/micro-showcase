@@ -7,22 +7,24 @@
 
 class CircleScene : public LightScene {
 private:
-  CHSV baseColor = fromHSV(180, 100, 100);
-  CHSV highlightColor = fromHSV(180, 20, 50);
+    CHSV baseColor = fromHSV(180, 100, 100);
+    CHSV highlightColor = fromHSV(180, 20, 50);
 
-  double startIndex = 0.4;
-  double sizeIndex = 0.1;
-  double speed = 0.02;
+    double startIndex = 0.4;
+    double sizeIndex = 0.1;
+    double speed = 0.02;
 
-  CRGBPalette16 palette;
-  TBlendType blending = LINEARBLEND;
+    CRGBPalette16 palette;
+    TBlendType blending = LINEARBLEND;
 
-  void loopRing(LEDRingPtr ring);
+    void loopRing(LEDRingPtr ring);
 
 public:
-  CircleScene();
-  virtual void setup(LEDRingPtr *rings);
-  virtual void loop();
+    CircleScene();
+
+    void setup(LEDRingPtr *rings) override;
+
+    void loop() override;
 };
 
 #endif
