@@ -35,19 +35,19 @@ void CircleScene::loopRing(uint8_t id, LEDRingPtr ring) {
     bool sensorDetected = false;
 
     // check sensors
-    if(id == 0 && sensorArray->results[0] < INTERACTION_DISTANCE)
+    if(id == 0 && sensorArray->results[0] < INTERACTION_DISTANCE && sensorArray->results[0] != 0)
         sensorDetected = true;
 
-    if(id == 0 && sensorArray->results[1] < INTERACTION_DISTANCE)
+    if(id == 0 && sensorArray->results[1] < INTERACTION_DISTANCE && sensorArray->results[1] != 0)
         sensorDetected = true;
 
-    if(id == 1 && sensorArray->results[2] < INTERACTION_DISTANCE)
+    if(id == 1 && sensorArray->results[2] < INTERACTION_DISTANCE && sensorArray->results[2] != 0)
         sensorDetected = true;
 
-    if(id == 2 && sensorArray->results[3] < INTERACTION_DISTANCE)
+    if(id == 2 && sensorArray->results[3] < INTERACTION_DISTANCE && sensorArray->results[3] != 0)
         sensorDetected = true;
 
-    if(id == 2 && sensorArray->results[4] < INTERACTION_DISTANCE)
+    if(id == 2 && sensorArray->results[4] < INTERACTION_DISTANCE && sensorArray->results[4] != 0)
         sensorDetected = true;
 
     for (int i = 0; i < ring->length; i++) {

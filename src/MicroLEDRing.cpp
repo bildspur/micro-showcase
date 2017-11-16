@@ -1,7 +1,6 @@
 #include <Arduino.h>
 
 #include "CircleScene.h"
-#include "DistanceSensorArray.h"
 #include "LogBook.h"
 #include "Timer.h"
 
@@ -16,11 +15,11 @@
 
 #define UPDATES_PER_SECOND 100
 
-#define SENSOR_TIMER 500
+#define SENSOR_TIMER 200
 
 #define BRIGHTNESS 100
 
-#define DEBUG true
+#define DEBUG false
 
 // create single led rings
 LEDRing smallRing = LEDRing(NUM_LEDS_SMALL);
@@ -68,6 +67,14 @@ void loop() {
         sensorArray.readData();
 
         if (DEBUG) {
+            Serial.print(int(millis() / 1000 / 60 / 60));
+            Serial.print(" h ");
+            Serial.print(int(millis() / 1000 / 60));
+            Serial.print(" m ");
+            Serial.print(int(millis() / 1000));
+            Serial.print(" s ");
+            Serial.print(": ");
+
             for (int i = 0; i < sensorArray.getLength(); i++) {
                 Serial.print(i);
                 Serial.print(" => ");
