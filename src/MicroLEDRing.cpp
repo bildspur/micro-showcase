@@ -3,6 +3,7 @@
 #include "CircleScene.h"
 #include "LogBook.h"
 #include "Timer.h"
+#include "ColorScene.h"
 
 #define NUM_LEDS_SMALL 160
 #define DATA_PIN_SMALL 3
@@ -15,12 +16,15 @@
 
 #define UPDATES_PER_SECOND 100
 
-#define SENSOR_TIMER 200
-
 #define BRIGHTNESS 100
 
 #define SENSORS_ACTIVE true
+
+#define SENSOR_TIMER 200
+
 #define DEBUG false
+
+#define IS_ONLY_LIGHT true
 
 // create single led rings
 LEDRing smallRing = LEDRing(NUM_LEDS_SMALL);
@@ -34,6 +38,7 @@ DistanceSensorArray sensorArray = DistanceSensorArray(5);
 
 // create scenes
 CircleScene circleScene = CircleScene();
+ColorScene colorScene = ColorScene();
 LightScene *activeScene;
 
 Timer sensorTimer = Timer(SENSOR_TIMER);
@@ -57,7 +62,12 @@ void setup() {
 
     // setup scenes
     circleScene.setup(rings, &sensorArray);
-    activeScene = &circleScene;
+    colorScene.setup(rings);
+
+    if (IS_ONLY_LIGHT)
+        activeScene = &colorScene;
+    else
+        activeScene = &circleScene;
 
     LogBook::println("rings ready!");
 }
