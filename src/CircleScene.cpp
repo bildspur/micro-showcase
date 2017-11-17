@@ -4,13 +4,15 @@ CircleScene::CircleScene() {
     // 'black out' all 16 palette entries...
     fill_solid(palette, 16, CRGB::Gray);
 
-    fill_solid(activePalette, 16, CRGB::Gray);
+    //fill_solid(activePalette, 16, CRGB::Gray);
 
     // and set every fourth one to white.
     for (int i = 0; i < 12; i++) {
         palette[i] = CRGB::Cyan;
-        activePalette[i] = CRGB::Magenta;
+        //activePalette[i] = CRGB::Magenta;
     }
+
+    activePalette = RainbowColors_p;
 };
 
 void CircleScene::setup(LEDRingPtr *rings,DistanceSensorArray *sensorArray) {

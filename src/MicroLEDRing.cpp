@@ -19,6 +19,7 @@
 
 #define BRIGHTNESS 100
 
+#define SENSORS_ACTIVE true
 #define DEBUG false
 
 // create single led rings
@@ -63,7 +64,7 @@ void setup() {
 
 void loop() {
     // read sensors
-    if (sensorTimer.elapsed()) {
+    if (SENSORS_ACTIVE && sensorTimer.elapsed()) {
         sensorArray.readData();
 
         if (DEBUG) {
