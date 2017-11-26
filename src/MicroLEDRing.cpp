@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "ColorScene.h"
 
+#define NUM_SENSORS 4
 #define NUM_LEDS_SMALL 160
 #define DATA_PIN_SMALL 3
 
@@ -34,7 +35,7 @@ LEDRing largeRing = LEDRing(NUM_LEDS_LARGE);
 // create led ring ptr array
 LEDRingPtr rings[]{&smallRing, &mediumRing, &largeRing};
 
-DistanceSensorArray sensorArray = DistanceSensorArray(5);
+DistanceSensorArray sensorArray = DistanceSensorArray(NUM_SENSORS);
 
 // create scenes
 CircleScene circleScene = CircleScene();
